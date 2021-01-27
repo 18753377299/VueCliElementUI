@@ -17,10 +17,10 @@ Vue.use(Router)
 
 export const constantRoutes = [
     /*如果想让一开始就默认选定某个路由加上下面的配置就好*/
-    // {
-    //     path: '/',
-    //     redirect: '/home'
-    // },
+    {
+        path: '/',
+        redirect: '/login'
+    },
     {
         path: '/login',
         component: () => import('@/views/riskins/RiskInsMainQuery'),
