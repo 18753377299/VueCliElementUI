@@ -9,3 +9,7 @@ router.beforeEach(async(to, from, next) => {
     // console.log(next)
     next()
 })
+
+router.afterEach((to, from) => {// eslint-disable-line no-unused-vars
+    // ...
+})

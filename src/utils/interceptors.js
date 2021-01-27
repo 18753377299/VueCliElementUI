@@ -3,6 +3,8 @@ import Vue from 'vue'
 import Toast from 'muse-ui-toast' /* 引入muse-ui的Toast插件 */
 import axios from 'axios'
 import qs from 'qs' /* 引入qs依赖包，对传参数据序列化 */
+/*执行方法的时候，使用loading加载框*/
+import {showLoading,hideLoading} from './loading.js'
 Vue.use(Toast, {
     time: 5000 /* 设置Toast显示5s，防止用户没有注意到 */
 })
@@ -10,7 +12,7 @@ Vue.use(Toast, {
 /* 创建axios实例 */
 const axiosService = axios.create({
     /* 在config/dev.evn.js、prod.evn.js里面进行配置 */
-    baseURL: process.env.VUE_APP_BASE_API,
+    // baseURL: process.env.VUE_APP_BASE_API,
     timeout: 5000 /* 设置超时时间为5s */
 })
 
@@ -20,10 +22,12 @@ axiosService.interceptors.request.use(
         config.method === 'post'
             ? config.data = qs.stringify({...config.data})
             : config.params = {...config.params}
+        showLoading();
         /* 判断method是否为post，为post则对参数进行序列化，不为post择不进行序列化 */
         config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
         return config
     }, error => {
+        hideLoading();
         Toast.error('错误，请重新操作...')
         Promise.reject(error)
     })
@@ -31,12 +35,14 @@ axiosService.interceptors.request.use(
 /* respone拦截器 ==> 对响应做处理 */
 axiosService.interceptors.response.use(
     response => {
+        hideLoading();
         if (response.data) {
             return response.data
         } else {
             Toast.error('数据错误，请重试...')
         }
     }, error => {
+        hideLoading();
         /* 判断error的status代码，并将对应的信息告知用户 */
         let text = ''
         let err = JSON.parse(JSON.stringify(error))

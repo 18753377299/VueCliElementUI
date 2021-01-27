@@ -20,21 +20,20 @@ export function doGet(url,data){
 }
 
 
-
 /* 下面是POST形式 */
-export const doPost = data => {
-    return axiosService({
-        url: '/XXXX/user/xxxx', /* 根据实际接口地址来写 */
-        method: 'post',
-        data
-    })
-}
+// export const doPost = data => {
+//     return axiosService({
+//         url: '/XXXX/user/xxxx', /* 根据实际接口地址来写 */
+//         method: 'post',
+//         data
+//     })
+// }
 
 /* 下面是GET形式 */
-export const userInfo = params=> {
-    return axiosService({
-        url: '/XXXX/user/XXXXX.action',
-        method: 'get',
-        params
-    })
-}
+// export const userInfo = params=> {
+//     return axiosService({
+//         url: '/XXXX/user/XXXXX.action',
+//         method: 'get',
+//         params
+//     })
+// }

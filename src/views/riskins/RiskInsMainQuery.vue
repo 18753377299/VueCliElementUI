@@ -53,20 +53,22 @@ import {queryRiskReport} from '@/api/riskins'
       },
       methods: {
           search(){
-              this.$http.get('api/getNewsList').then((response)=>{
-//                  this.newsList=response.data.data;
-                  console.log(response);
-              }).catch((response)=>{
-                  console.log(response);
-              })
-              queryRiskReport({riskFileNo: params.row.riskFileNo}).then((response) => {
-
+//              this.$http.get('api/getNewsList').then((response)=>{
+////                  this.newsList=response.data.data;
+//                  console.log(response);
+//              }).catch((response)=>{
+//                  console.log(response);
+//              })
+              queryRiskReport({riskFileNo: '123'}).then((response) => {
+                 console.log(response)
               }, (response) => {
+                  console.log(response)
                 this.$message({
                       message: '导出报告异常',
                       type: 'warning'
                   })
               })
+
           }
       }
 

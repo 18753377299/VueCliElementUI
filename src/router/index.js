@@ -26,6 +26,17 @@ export const constantRoutes = [
         component: () => import('@/views/riskins/RiskInsMainQuery'),
         // hidden: true
     },
+    {
+        path: '/assetbuy',
+        component: () => import('@/views/asset/RiskAssetBuyApply'),
+        // hidden: true
+    },
+    {
+        path: '/role',
+        component: () => import('@/views/asset/role'),
+        // hidden: true
+    },
+
     // {
     //     path: '/dashboard',
     //     component: Layout,
